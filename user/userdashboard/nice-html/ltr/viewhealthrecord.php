@@ -35,7 +35,52 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <body>
 
-    <div class="preloader">
+<?php
+  $sql= "SELECT * FROM healthrecord";
+  $result = mysqli_query($conection_db, $sql);
+
+  if (mysqli_num_rows($result) > 0) {
+    while($row = $result -> fetch_assoc()){
+      $healthuser_id = $row['healthuser_id'];
+      $idnumber = $row['idnumber'];
+      $fullname = $row['fullname'];
+      $age = $row['age'];
+      $birthday = $row['birthday'];
+      $contact = $row['contact'];
+      $gender = $row['gender'];
+      $student_employee = $row['student_employee'];
+      $gradecourse = $row['gradecourse'];
+      $address = $row['address'];
+      $father = $row['father'];
+      $fcontact = $row['fcontact'];
+      $mother = $row['mother'];
+      $mcontact = $row['mcontact'];
+      $polio = $row['polio'];
+      $tetanus = $row['tetanus'];
+      $chickenpox = $row['chickenpox'];
+      $measles = $row['measles'];
+      $mumps = $row['mumps'];
+      $asthma = $row['asthma'];
+      $tb = $row['tb'];
+      $hepatitis = $row['hepatitis'];
+      $fainting = $row['fainting'];
+      $seizure_epilepsy = $row['seizure_epilepsy'];
+      $bleeding = $row['bleeding'];
+      $eyedisorder = $row['eyedisorder'];
+      $heart = $row['heart'];
+      $allergyfood = $row ['allergyfood'];
+      $allergymed = $row ['allergymed'];
+      $allow_not = $row ['allow_not'];
+      $medications = $row ['medications'];
+      $nameperson = $row ['nameperson'];
+      $personcp = $row ['personcp'];
+      $relationship = $row ['relationship'];
+    }
+  } else {
+    
+  }
+?>
+<div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
             <div class="lds-pos"></div>
@@ -109,7 +154,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                 <span class="hide-menu">Health Record Form</span>
                             </a>
                         </li>
-                       
+
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="viewhealthrecord.php"
                                 aria-expanded="false">
@@ -117,6 +162,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                 <span class="hide-menu">View Health Record</span>
                             </a>
                         </li>
+                       
                      
                     </ul>
                 </nav>
@@ -125,6 +171,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             
         </aside>
        
+     
         <div class="page-wrapper">
         
             <div class="page-breadcrumb">
@@ -147,172 +194,183 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 </div>
             </div>
          
+        
+            
             <div class="container-fluid">
                
                 <div class="row">
                     <div class="col-12">
                         <div class="card card-body">
+
+                        
                             <h4 class="card-title">Health Record</h4>
                             <h5 class="card-subtitle"> Please fill-up the form honestly </h5>
-                            <form class="form-horizontal mt-4" action="../../functions/userdashboardf.php" method="POST">
-                                <div class="form-group">
+                               
+
+                          
+                            <div class="form-group">
+                                
+                              </span><label>User Number</label>
+
+
+                                <input type="text" name="healthuser_id" value="<?php echo $healthuser_id; ?>" disabled>
+
+                            <div class="form-group">
+                                
                                 <span class="note" style="color: red;">*</span><label>ID Number</label>
 
 
-                                <input type="text" name="idnumber" value="" placeholder="Enter Your ID Number" required>
+                                <input type="text" name="idnumber" value="<?php echo $idnumber; ?>" placeholder="Enter Your ID Number" required disabled>
 
-&nbsp;&nbsp;&nbsp;&nbsp;
-<label>Full Name <span class="help"></span></label>
-<input type="text" id="name" name="fullname" value="" placeholder="Enter Your Full Name">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label>Full Name <span class="help"></span></label>
+                                    <input type="text" id="name" name="fullname" value="<?php echo $fullname; ?>" placeholder="Enter Your Full Name" disabled>
 
-&nbsp;&nbsp;&nbsp;&nbsp;<label>Age</label>
-<input type="text" name="age" value="">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<label>Age</label>
+                                    <input type="text" name="age" value="<?php echo $age; ?>" disabled>
 
-<div class="form-group">
-<label>Birthday</label>
-<input type="date" name="birthday" value="">
+                                    <div class="form-group">
+                                    <label>Birthday</label>
+                                    <input type="date" name="birthday" value="<?php echo $birthday; ?>" disabled>
 
-<label>Contact</label>
-<input type="text" name="contact" value="">
+                                    <label>Contact</label>
+                                    <input type="text" name="contact" value="<?php echo $contact; ?>" disabled>
 
-</div>
+                                    </div>
 
-<div class="form-group">
-    <label>Gender</label>
-    <select name="gender">
-    <option value="" >-- Select Gender --</option>
-    <option name="gender" value="male"> Male</option>
-        <option value="female"> Female</option>
-</select>
-</div>
-
-<div class="form-group">
-    <label>Are you....</label>
-    <select name="student_employee">
-    <option value=""> -- Select --</option>
-        <option value="student"> Student </option>
-        <option value="employee"> Employee </option>
-</select>
-</div>
-<div class="form-group">
-<label>Grade/Course and Year/Position</label>
-<input type="text" name="gradecourse" value="">
-</div>
-<div class="form-group">
-<label>Home Address</label>
-<input type="text" name="address" value="">
-</div>
-<div class="form-group">
-<label>Father</label>
-<input type="text" name="father" value="">
-&nbsp;&nbsp;&nbsp;<label>Contact Number</label>
-<input type="text" name="fcontact" value="">
-</div>
-
-<div class="form-group">
-<label>Mother</label>
-<input type="text" name="mother" value="">
-&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp; <label>Contact Number</label>
-<input type="text" name="mcontact" value="">
-</div>
-<br>
+                                    <div class="form-group">
+                                         <label>Gender</label>
+                                        <select name="gender" disabled>
+                                        <option value="" <?php if($gender == '') echo 'selected'; ?> >-- Select Gender --</option>
+                                        <option value="male" <?php if($gender == 'male') echo 'selected'; ?>> Male</option>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <option value="female"<?php if($gender == 'female') echo 'selected'; ?> > Female</option>
+                                    </select>
+                                    </div>
 
 
-<h5 class="card-subtitle"> <h5 class="card-subtitle"> Medical History</h5>
+                                    <div class="form-group">
+                                        <label>Are you....</label>
+                                        <select name="student_employee" disabled>
+                                        <option value=""  <?php if($gender == '') echo 'selected'; ?>> -- Select --</option>
+                                            <option value="student" <?php if($student_employee == 'student') echo 'selected'; ?>> Student </option>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <option value="employee" <?php if($student_employee == 'employee') echo 'selected'; ?>> Employee </option>
+                                    </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                    <label>Grade/Course and Year/Position</label>
+                                    <input type="text" name="gradecourse" value="<?php echo $gradecourse; ?>" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                    <label>Home Address</label>
+                                    <input type="text" name="address" value="<?php echo $gradecourse; ?>" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                    <label>Father</label>
+                                    <input type="text" name="father" value="<?php echo $gradecourse; ?>" disabled>
+                                    &nbsp;&nbsp;&nbsp;<label>Contact Number</label>
+                                    <input type="text" name="fcontact" value="<?php echo $gradecourse; ?>" disabled>
+                                    </div>
+
+                                    <div class="form-group">
+                                    <label>Mother</label>
+                                    <input type="text" name="mother" value="<?php echo $gradecourse; ?>" disabled>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp; <label>Contact Number</label>
+                                    <input type="text" name="mcontact" value="<?php echo $gradecourse; ?>" disabled>
+                                    </div>
+                                    <br>
+
+
+                                    <h5 class="card-subtitle"> Medical History </h5>
                             <div class = "form-group">
                                 
-                                    <input type="checkbox" name="polio" value="polio"> Polio
+                                    <input type="checkbox" name="polio" value="polio" <?php if($polio == 'polio') echo 'checked'; ?> disabled> Polio
                                 
                               
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="tetanus" value="tetanus"> Tetanus
+                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="tetanus" value="tetanus" <?php if($tetanus == 'tetanus') echo 'checked'; ?> disabled> Tetanus
                                 
                              
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="chickenpox" value="chickenpox"> Chicken Pox
+                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="chickenpox" value="chickenpox" <?php if($chickenpox == 'chickenpox') echo 'checked'; ?> disabled> Chicken Pox
                                 <br>
-                                    <input type="checkbox" name="measles" value="measles"> Measles
+                                    <input type="checkbox" name="measles" value="measles" <?php if($measles == 'measles') echo 'checked'; ?> disabled> Measles
                                 
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;  <input type="checkbox" name="mumps" value="mumps"> Mumps
+                                &nbsp;&nbsp;  <input type="checkbox" name="mumps" value="mumps" <?php if($mumps == 'mumps') echo 'checked'; ?>  disabled> Mumps
                                 
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="asthma" value="asthma"> Asthma
+                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="asthma" value="asthma" <?php if($asthma == 'asthma') echo 'checked'; ?> disabled> Asthma
                                 <br>
-                                    <input type="checkbox" name="tb" value="tb"> Pulmonary Tuberculosis
+                                    <input type="checkbox" name="tb" value="tb" <?php if($tb == 'tb') echo 'checked'; ?> disabled> Pulmonary Tuberculosis
                                 
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;  <input type="checkbox" name="hepatitis" value="hepatitis"> Hepatitis
+                                &nbsp;&nbsp;&nbsp;&nbsp;  <input type="checkbox" name="hepatitis" value="hepatitis" <?php if($hepatitis == 'hepatitis') echo 'checked'; ?> disabled> Hepatitis
                                
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="fainting" value="fainting"> Fainting Spells
+                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="fainting" value="fainting" <?php if($fainting == 'fainting') echo 'checked'; ?> disabled> Fainting Spells
                                <br>
-                                    <input type="checkbox" name="seizure_epilepsy" value="seizure_epilepsy"> Seizure/Epilepsy
+                                    <input type="checkbox" name="seizure_epilepsy" value="seizure_epilepsy" <?php if($seizure_epilepsy == 'seizure_epilepsy') echo 'checked'; ?> disabled> Seizure/Epilepsy
                                 
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <input type="checkbox" name="bleeding" value="bleeding"> Bleeding Tendencies
+                                    <input type="checkbox" name="bleeding" value="bleeding" <?php if($bleeding == 'bleeding') echo 'checked'; ?> disabled> Bleeding Tendencies
                                
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="eyedisorder" value="eyedisorder"> Eye Disorder
+                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="eyedisorder" value="eyedisorder" <?php if($eyedisorder == 'eyedisorder') echo 'checked'; ?> disabled> Eye Disorder
                                 <br>
 
                                 <label>Heart Ailment (please specify)</label>
-                                    <input type="text" name="heart" value="">
+                                    <input type="text" name="heart" value="<?php echo $heart; ?>" disabled>
                                 &nbsp;&nbsp;&nbsp;<label>Other illness (please specify)</label>
-                                    <input type="text" name="illness" value="">
+                                    <input type="text" name="illness" value="" disabled>
                             
                                     <br><br>
                                     <label>Do you have any allergy to: <br><br>
-                                        1. Food (if YES please specify, if NO leave it blank) <input type="text" name="allergyfood" value=""><br><br>
-                                        2. Medicine (if YES please specify, if NO leave it blank) <input type="text" name="allergymed" value="">
+                                        1. Food (if YES please specify, if NO leave it blank) <input type="text" name="allergyfood"  value="<?php echo $allergyfood; ?>" disabled><br><br>
+                                        2. Medicine (if YES please specify, if NO leave it blank) <input type="text" name="allergymed"  value="<?php echo $allergymed; ?>" disabled>
                                     </label>
-
-
                                     <div class="form-group">
                                     <label>Would you allow your child to be given medicine (as needed) while here in the school?</label>
-                                <div>
-                                <select name="allow_not">
-                                <option value="" >-- Select --</option>
-                                <option type="radio" name="allow_not" value="yes"> Yes </option>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;<option type="radio" name="allow_not" value="no"> No </option>
-</select>
-                                <br><br>
+                                    <select name="allow_not" disabled>
+                                    <option <?php if($allow_not == '') echo 'selected'; ?>> -- Select --</option>
+                                    <option type="radio" name="allow_not" value="yes" <?php if($allow_not == 'yes') echo 'selected'; ?>> Yes </option>
+                                <option type="radio" name="allow_not" value="no" <?php if($allow_not == 'no') echo 'selected'; ?>> No </option>
 
-                                <div class="form-group">
+</select>
+                                   
+<br></br>
+                     <div class="form-group">
                                 <label>Is your child taking any medications at present? If YES, please list the name of the medicine/s:
                                 </label>
-                                    <input type="text" name="medications" value=""></div>
+                                    <input type="text" name="medications" value="<?php echo $medications; ?>" disabled></div>
 
                                     <div class="form-group">
                                 <label>Name of the person to be notified in case of emergency:
                                 </label>
-                                    <input type="text" name="nameperson" value=""></div>
+                                    <input type="text" name="nameperson"  value="<?php echo $nameperson; ?>" disabled></div>
                                     <div class="form-group">
                                     <label>Person contact number
                                 </label>
-                                    <input type="text" name="personcp" value="">
+                                    <input type="text" name="personcp"  value="<?php echo $personcp; ?>" disabled>
                                   &nbsp;&nbsp; &nbsp;  <label>Relationship:
                                 </label>
-                                    <input type="text" name="relationship" value="">
+                                    <input type="text" name="relationship" value="<?php echo $relationship; ?>" disabled>
                                 </div>
                             </div>
                             </div>
-                                    
-                            <input type="submit" name="submit_form_post" value="Submit">
-              
-                                </form>
-</div>
+                   
 
             <footer class="footer text-center">
                 All Rights Reserved by Nice admin. Designed and Developed by
@@ -322,6 +380,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </div>
 
     </div>
+
+   
    
     <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
@@ -334,6 +394,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <script src="../../dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="../../dist/js/custom.min.js"></script>
+ 
 </body>
 
 </html>
