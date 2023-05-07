@@ -56,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                             $_SESSION["email"] = $email;                            
                             
                             // Redirect user to userdashboard page
-                            header("location: userdashboard.php");
+                            header("location: userdashboard/nice-html/ltr/healthformdashboard.php");
                         }
                         else
                         {

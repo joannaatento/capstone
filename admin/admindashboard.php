@@ -4,7 +4,7 @@ session_start();
  
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: loginuser.php");
+    header("location: adminlogin.php");
     exit;
 }
 ?>
@@ -39,13 +39,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </div>
 
         <div class="form-group mb-3">
-        <?php  if (isset($_SESSION['email'])) : ?>
-            <p class="btn btn-primary login-btn btn-block">Email: <?php echo $_SESSION['email']; ?></p>
+        <?php  if (isset($_SESSION['username'])) : ?>
+            <p class="btn btn-primary login-btn btn-block">Username: <?php echo $_SESSION['username']; ?></p>
             <?php endif ?>
         </div>
         
         <div class="text-center mb-3">
-            <p class="text-muted"><a href="function/logoutuserf.php">Logout</a></p>
+            <p class="text-muted"><a href="function/adminlogoutf.php" class="btn btn-danger">Logout</a>
         </div>
 		<div class="or-seperator"><i>OR</i></div>
         
