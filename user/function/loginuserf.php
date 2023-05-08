@@ -56,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                             $_SESSION["email"] = $email;                            
                             
                             // Redirect user to userdashboard page
-                            header("location: userdashboard/nice-html/ltr/healthformdashboard.php");
+                            header("location: userdashboard/dashboard/healthrecorddashboard.php");
                         }
                         else
                         {
@@ -82,3 +82,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     // Close connection
     mysqli_close($conection_db);
 }
+
+?>
