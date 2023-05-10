@@ -273,6 +273,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                     <input type="text" name="medications" value=""></div>
 
 
+                                    
 <br><br>
 
 <div class="form-group">
