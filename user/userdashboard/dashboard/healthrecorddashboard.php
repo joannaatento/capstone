@@ -53,8 +53,15 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 		            <div class="app-utilities col-auto">
 			            
 			            <div class="app-utility-item app-user-dropdown dropdown">
-				            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="assets/images/user.png" alt="user profile"></a>
-				            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
+				            <img src="assets/images/user.png" alt="user profile">
+				             <div class="app-utility-item app-user-dropdown dropdown">
+
+                   <?php  if (isset($_SESSION['username'])) : ?>
+                                    <p><?php echo $_SESSION['username']; ?></p>
+                                    <?php endif ?></a>
+                   </div>
+                   <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"></a>
+                            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
 								<li><a class="dropdown-item" href="account.html">Account</a></li>
 								<li><a class="dropdown-item" href="settings.html">Settings</a></li>
 								<li><hr class="dropdown-divider"></li>
@@ -71,10 +78,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	        <div class="sidepanel-inner d-flex flex-column">
 		        <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
 		        <div class="app-branding">
-		            <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="assets/images/app-logo.svg" alt="logo"><span class="logo-text">PORTAL</span></a>
+		        <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="assets/images/dwcl.png" alt="logo"></a>
 	
 		        </div><!--//app-branding-->  
 		        
+                </br>
+                   </br>
 			    <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
 				    <ul class="app-menu list-unstyled accordion" id="menu-accordion">
 					    <li class="nav-item has-submenu">
@@ -87,6 +96,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	  								<path d="M6 0h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2v-1a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1H4a2 2 0 0 1 2-2z"/>
 								</svg>
 						         </span>
+                                 
 		                         <span class="nav-link-text">Health Record</span>
 		                         <span class="submenu-arrow">
 		                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -94,6 +104,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 											</svg>
 	                             </span><!--//submenu-arrow-->
 					      				  </a><!--//nav-link-->
+                  
 					        			<div id="submenu-1" class="collapse submenu submenu-1" data-bs-parent="#menu-accordion">
 						        <ul class="submenu-list list-unstyled">
 									<li class="submenu-item"><a class="submenu-link" href="healthrecorddashboard.php">Health Record Form</a></li>
@@ -140,154 +151,161 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 							    <h6 class="accordion-header" id="faq1-heading-1">
 								<form class="form-horizontal mt-4" action="functions/healthrecorddashboardf.php" method="POST">
 
-								<span class="note" style="color: red;">*</span><label>ID Number</label>
-									<input type="text" name="idnumber" value="" placeholder="Enter Your ID Number" required>
+                                <table>
+  <tr>
+    <td><span class="note" style="color: red;">*</span><label>ID Number</label></td>
+    <td><input type="text" name="idnumber" value="" placeholder="Enter Your ID Number" required></td>
+  
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Full Name <span class="help"></span></label></td>
+    <td><input type="text" id="name" name="fullname" value="" placeholder="Enter Your Full Name"></td>
+  
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Age</label></td>
+    <td><input type="text" name="age" value=""></td>
+  
+                   </table>
+                   <br>
+  <table>
 
-									&nbsp;&nbsp;&nbsp;&nbsp;
-<label>Full Name <span class="help"></span></label>
-<input type="text" id="name" name="fullname" value="" placeholder="Enter Your Full Name">
+                   <tr>
 
-&nbsp;&nbsp;&nbsp;&nbsp;<label>Age</label>
-<input type="text" name="age" value="">
-</br><br>
-<div class="form-group">
-<label>Birthday</label>
-<input type="date" name="birthday" value="">
-
-&nbsp;&nbsp;&nbsp;&nbsp;<label>Contact</label>
-<input type="text" name="contact" value="">
-
-&nbsp;&nbsp;&nbsp;&nbsp;
-<label>Gender</label>
-    <select name="gender">
-    <option value="" >-- Select Gender --</option>
-    <option name="gender" value="male"> Male</option>
-        <option value="female"> Female</option>
-</select>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<label>Are you....</label>
-    <select name="student_employee">
-    <option value=""> -- Select --</option>
-        <option value="student"> Student </option>
-        <option value="employee"> Employee </option>
-</select>
-</div>
-<br>
-<div class="form-group">
-<label>Grade/Course and Year/Position</label>
-<input type="text" name="gradecourse" value="">
-</div>
-<br>
-<div class="form-group">
-<label>Home Address</label>
-<input type="text" name="address" value="">
-</div>
-<br>
-<div class="form-group">
-<label>Father</label>
-<input type="text" name="father" value="">
-&nbsp;&nbsp;&nbsp;<label>Contact Number</label>
-<input type="text" name="fcontact" value="">
-</div>
-<br>
-<div class="form-group">
-<label>Mother</label>
-<input type="text" name="mother" value="">
-&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp; <label>Contact Number</label>
-<input type="text" name="mcontact" value="">
-</div>
-<br>
-<br>
-<h4 class="app-card-title">Medical History</h4>
-<input type="checkbox" name="polio" value="polio"> Polio
-                                
-                              
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="tetanus" value="tetanus"> Tetanus
-                                
-                             
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="chickenpox" value="chickenpox"> Chicken Pox
-                                <br>
-                                    <input type="checkbox" name="measles" value="measles"> Measles
-                                
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;  <input type="checkbox" name="mumps" value="mumps"> Mumps
-                                
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="asthma" value="asthma"> Asthma
-                                <br>
-                                    <input type="checkbox" name="tb" value="tb"> Pulmonary Tuberculosis
-                                
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;  <input type="checkbox" name="hepatitis" value="hepatitis"> Hepatitis
-                               
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="fainting" value="fainting"> Fainting Spells
-                               <br>
-                                    <input type="checkbox" name="seizure_epilepsy" value="seizure_epilepsy"> Seizure/Epilepsy
-                                
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <input type="checkbox" name="bleeding" value="bleeding"> Bleeding Tendencies
-                               
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="eyedisorder" value="eyedisorder"> Eye Disorder
-                                <br>
-
-                                <label>Heart Ailment (please specify)</label>
-                                    <input type="text" name="heart" value="">
-                                &nbsp;&nbsp;&nbsp;<label>Other illness (please specify)</label>
-                                    <input type="text" name="illness" value="">
-                            
-                                    <br><br>
-                                    <label>Do you have any allergy to: <br><br>
-                                        1. Food (if YES please specify, if NO leave it blank) <input type="text" name="allergyfood" value=""><br><br>
-                                        2. Medicine (if YES please specify, if NO leave it blank) <input type="text" name="allergymed" value="">
-                                    </label>
-
-
-                                    <div class="form-group">
-                                    <label>Would you allow your child to be given medicine (as needed) while here in the school?</label>
-                                <div>
-                                <select name="allow_not">
-                                <option value="" >-- Select --</option>
-                                <option type="radio" name="allow_not" value="yes"> Yes </option>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;<option type="radio" name="allow_not" value="no"> No </option>
-</select>
-                                <br><br>
-
-                                <div class="form-group">
-                                <label>Is your child taking any medications at present? If YES, please list the name of the medicine/s:
-                                </label>
-                                    <input type="text" name="medications" value=""></div>
-
+    <td><label>Birthday</label></td>
+    <td><input type="date" name="birthday" value=""></td>
+  
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Contact</label></td>
+    <td><input type="text" name="contact" value=""></td>
+  
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Gender</label></td>
+    <td>
+      <select name="gender">
+        <option value="">-- Select Gender --</option>
+        <option name="gender" value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </td>
+  </tr>
+                   </table>
+                   <br>
+                   <table>
+  <tr>
+    <td><label>Are you....</label></td>
+    <td>
+      <select name="student_employee">
+        <option value="">-- Select --</option>
+        <option value="student">Student</option>
+        <option value="employee">Employee</option>
+      </select>
+    </td>
+ 
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label>Grade/Course & Year/Position</label></td>
+    <td><input type="text" name="gradecourse" value=""></td>
+ 
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Home Address</label></td>
+    <td><input type="text" name="address" value=""></td>
+  </tr>
+                   </table>
+                   <br>
+                   <table>
+  <tr>
+    <td><label>Father</label></td>
+    <td><input type="text" name="father" value=""></td>
+  
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Contact Number</label></td>
+    <td><input type="text" name="fcontact" value=""></td>
+  </tr>
+                   </table>
+                   <br>
+                   <table>
+  <tr>
+    <td><label>Mother</label></td>
+    <td><input type="text" name="mother" value=""></td>
+ 
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Contact Number</label></td>
+    <td><input type="text" name="mcontact" value=""></td>
+  </tr>
+</table>
 
 <br><br>
+<h4 class="app-card-title">Medical History</h4>
+<table>
+  <tr>
+    <td><input type="checkbox" name="polio" value="polio"> Polio</td>
+    <td><input type="checkbox" name="tetanus" value="tetanus"> Tetanus</td>
+    <td><input type="checkbox" name="chickenpox" value="chickenpox"> Chicken Pox</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" name="measles" value="measles"> Measles</td>
+    <td><input type="checkbox" name="mumps" value="mumps"> Mumps</td>
+    <td><input type="checkbox" name="asthma" value="asthma"> Asthma</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" name="tb" value="tb"> Pulmonary Tuberculosis</td>
+    <td><input type="checkbox" name="hepatitis" value="hepatitis"> Hepatitis</td>
+    <td><input type="checkbox" name="fainting" value="fainting"> Fainting Spells</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" name="seizure_epilepsy" value="seizure_epilepsy"> Seizure/Epilepsy</td>
+    <td><input type="checkbox" name="bleeding" value="bleeding"> Bleeding Tendencies</td>
+    <td><input type="checkbox" name="eyedisorder" value="eyedisorder"> Eye Disorder</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <label>Heart Ailment (please specify)</label>
+      <input type="text" name="heart" value="">
+      <label>Other illness (please specify)</label>
+      <input type="text" name="illness" value="">
+    </td>
+  </tr>
+                   </table>
+                   <br>
+                   <table>
+                    
+  <tr>
+    <td>
+      <label>Do you have any allergy to:</label><br><br>
+      <label>1. Food (if YES please specify, if NO leave it blank)</label>
+      <input type="text" name="allergyfood" value=""><br><br>
+      <label>2. Medicine (if YES please specify, if NO leave it blank)</label>
+      <input type="text" name="allergymed" value="">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label>Would you allow your child to be given medicine (as needed) while here in the school?)</label>
+      <select name="allow_not">
+        <option value="">-- Select --</option>
+        <option type="radio" name="allow_not" value="yes"> Yes </option>
+        <option type="radio" name="allow_not" value="no"> No </option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label>Is your child taking any medications at present? If YES, please list the name of the medicine/s:</label>
+      <input type="text" name="medications" value="">
+    </td>
+  </tr>
+</table>
 
-<div class="form-group">
+<br>
+
                                 <label>Name of the person to be notified in case of emergency:
                                 </label>
-                                    <input type="text" name="nameperson" value=""></div>
-                                    <div class="form-group">
-                                    <label>Person contact number
-                                </label>
+                                    <input type="text" name="nameperson" value="">
+                    
+                                    <label>Person contact number </label>
+                               
                                     <input type="text" name="personcp" value="">
-                                  &nbsp;&nbsp; &nbsp;  <label>Relationship:
+                                   <label>Relationship:
                                 </label>
                                     <input type="text" name="relationship" value="">
-                                </div>
-
+                                </br> 
 								<input type="submit" name="submit_form_post" value="Submit">
 </form>
 							</div><!--//accordion-item-->
