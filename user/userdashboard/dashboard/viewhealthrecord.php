@@ -202,155 +202,161 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 							    <h6 class="accordion-header" id="faq1-heading-1">
 								<form class="form-horizontal mt-4" action="functions/healthrecorddashboardf.php" method="POST">
 
+                                <table>
+  <tr>
+    <td><span class="note" style="color: red;">*</span><label>ID Number</label></td>
+    <td><input type="text" name="idnumber" value="<?php echo $idnumber; ?>" readonly placeholder="Enter Your ID Number" required></td>
+  
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Full Name <span class="help"></span></label></td>
+    <td><input type="text" id="name" name="fullname"  value="<?php echo $fullname; ?>" readonly placeholder="Enter Your Full Name"></td>
+  
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Age</label></td>
+    <td><input type="text" name="age"  value="<?php echo $age; ?>" readonly></td>
+  
+                   </table>
+                   <br>
+  <table>
 
-                                
-								<span class="note" style="color: red;">*</span><label>ID Number</label>
-									<input type="text" name="idnumber" value="<?php echo $idnumber; ?>" readonly placeholder="Enter Your ID Number" required>
+                   <tr>
 
-									&nbsp;&nbsp;&nbsp;&nbsp;
-<label>Full Name <span class="help"></span></label>
-<input type="text" id="name" name="fullname" value="<?php echo $fullname; ?>" readonly placeholder="Enter Your Full Name">
-
-&nbsp;&nbsp;&nbsp;&nbsp;<label>Age</label>
-<input type="text" name="age" value="<?php echo $age; ?>" readonly >
-</br><br>
-<div class="form-group">
-<label>Birthday</label>
-<input type="date" name="birthday" value="<?php echo $birthday; ?>" readonly >
-
-&nbsp;&nbsp;&nbsp;&nbsp;<label>Contact</label>
-<input type="text" name="contact" value=""<?php echo $contact; ?> readonly >
-
-&nbsp;&nbsp;&nbsp;&nbsp;
-<label>Gender</label>
-    <select name="gender" readonly>
-    <option value="<?php echo $gender; ?>">-- Select Gender --</option>
-    <option name="gender" value="male"> Male</option>
-        <option value="female"> Female</option>
-</select>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<label>Are you....</label>
-    <select name="student_employee">
-    <option value="<?php echo $student_employee; ?>" readonly > -- Select --</option>
-        <option value="student"> Student </option>
-        <option value="employee"> Employee </option>
-</select>
-</div>
-<br>
-<div class="form-group">
-<label>Grade/Course and Year/Position</label>
-<input type="text" name="gradecourse" value="<?php echo $gradecourse; ?>" readonly >
-</div>
-<br>
-<div class="form-group">
-<label>Home Address</label>
-<input type="text" name="address" value="<?php echo $address; ?>" readonly >
-</div>
-<br>
-<div class="form-group">
-<label>Father</label>
-<input type="text" name="father" value="<?php echo $father; ?>" readonly >
-&nbsp;&nbsp;&nbsp;<label>Contact Number</label>
-<input type="text" name="fcontact" value="<?php echo $fcontact; ?>" readonly >
-</div>
-<br>
-<div class="form-group">
-<label>Mother</label>
-<input type="text" name="mother" value="<?php echo $mother; ?>" readonly >
-&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp; <label>Contact Number</label>
-<input type="text" name="mcontact" value="<?php echo $mcontact; ?>" readonly>
-</div>
-<br>
-<br>
-<h4 class="app-card-title">Medical History</h4>
-<input type="checkbox" name="polio" value="polio" <?php if($polio == 'polio') echo 'checked'; ?> readonly> Polio
-                                
-                              
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="tetanus" value="tetanus" <?php if($tetanus == 'tetanus') echo 'checked'; ?> readonly> Tetanus
-                                
-                             
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="chickenpox" value="chickenpox" <?php if($chickenpox == 'chickenpox') echo 'checked'; ?> readonly> Chicken Pox
-                                <br>
-                                    <input type="checkbox" name="measles" value="measles" <?php if($measles == 'measles') echo 'checked'; ?> readonly> Measles
-                                
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;  <input type="checkbox" name="mumps" value="mumps" <?php if($mumps == 'mumps') echo 'checked'; ?> readonly> Mumps
-                                
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="asthma" value="asthma" <?php if($asthma == 'asthma') echo 'checked'; ?> readonly> Asthma
-                                <br>
-                                    <input type="checkbox" name="tb" value="tb" <?php if($tb == 'tb') echo 'checked'; ?> readonly> Pulmonary Tuberculosis
-                                
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;  <input type="checkbox" name="hepatitis" value="hepatitis" <?php if($hepatitis == 'hepatitis') echo 'checked'; ?> readonly> Hepatitis
-                               
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="fainting" value="fainting" <?php if($fainting == 'fainting') echo 'checked'; ?> readonly> Fainting Spells
-                               <br>
-                                    <input type="checkbox" name="seizure_epilepsy" value="seizure_epilepsy" <?php if($seizure_epilepsy == 'seizure_epilepsy') echo 'checked'; ?> readonly> Seizure/Epilepsy
-                                
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <input type="checkbox" name="bleeding" value="bleeding" <?php if($bleeding == 'bleeding') echo 'checked'; ?> readonly> Bleeding Tendencies
-                               
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="eyedisorder" value="eyedisorder" <?php if($eyedisorder == 'eyedisorder') echo 'checked'; ?> readonly> Eye Disorder
-                                <br>
-
-                                <label>Heart Ailment (please specify)</label>
-                                    <input type="text" name="heart" value="<?php echo $heart; ?>" readonly>
-                                &nbsp;&nbsp;&nbsp;<label>Other illness (please specify)</label>
-                                    <input type="text" name="illness" value="<?php echo $illness; ?>" readonly>
-                            
-                                    <br><br>
-                                    <label>Do you have any allergy to: <br><br>
-                                        1. Food (if YES please specify, if NO leave it blank) <input type="text" name="allergyfood" value="<?php echo $allergyfood; ?>" readonly><br><br>
-                                        2. Medicine (if YES please specify, if NO leave it blank) <input type="text" name="allergymed" value="<?php echo $allergymed; ?>" readonly>
-                                    </label>
-
-
-                                    <div class="form-group">
-                                    <label>Would you allow your child to be given medicine (as needed) while here in the school?</label>
-                                <div>
-                                <select name="allow_not">
-                                <option value="" >-- Select --</option>
-                                <option type="radio" name="allow_not" value="yes" <?php if($allow_not == 'yes') echo 'selected'; ?> readonly > Yes </option>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;<option type="radio" name="allow_not" value="no" <?php if($allow_not == 'yes') echo 'selected'; ?> readonly> No </option>
-</select>
-                                <br><br>
-
-                                <div class="form-group">
-                                <label>Is your child taking any medications at present? If YES, please list the name of the medicine/s:
-                                </label>
-                                    <input type="text" name="medications" value="<?php echo $medications; ?>" readonly></div>
-
+    <td><label>Birthday</label></td>
+    <td><input type="date" name="birthday"  value="<?php echo $birthday; ?>" readonly></td>
+  
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Contact</label></td>
+    <td><input type="text" name="contact"  value="<?php echo $contact; ?>" readonly></td>
+  
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Gender</label></td>
+    <td>
+      <select name="gender">
+        <option  value="<?php echo $gender; ?>" readonly>-- Select Gender --</option>
+        <option name="gender" value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </td>
+  </tr>
+                   </table>
+                   <br>
+                   <table>
+  <tr>
+    <td><label>Are you....</label></td>
+    <td>
+      <select name="student_employee">
+        <option  value="<?php echo $student_employee; ?>" readonly>-- Select --</option>
+        <option value="student">Student</option>
+        <option value="employee">Employee</option>
+      </select>
+    </td>
+ 
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label>Grade/Course & Year/Position</label></td>
+    <td><input type="text" name="gradecourse"  value="<?php echo $gradecourse; ?>" readonly></td>
+ 
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Home Address</label></td>
+    <td><input type="text" name="address"  value="<?php echo $address; ?>" readonly></td>
+  </tr>
+                   </table>
+                   <br>
+                   <table>
+  <tr>
+    <td><label>Father</label></td>
+    <td><input type="text" name="father"  value="<?php echo $father; ?>" readonly></td>
+  
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Contact Number</label></td>
+    <td><input type="text" name="fcontact"  value="<?php echo $fcontact; ?>" readonly></td>
+  </tr>
+                   </table>
+                   <br>
+                   <table>
+  <tr>
+    <td><label>Mother</label></td>
+    <td><input type="text" name="mother"  value="<?php echo $mother; ?>" readonly></td>
+ 
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Contact Number</label></td>
+    <td><input type="text" name="mcontact"  value="<?php echo $mcontact; ?>" readonly></td>
+  </tr>
+</table>
 
 <br><br>
+<h4 class="app-card-title">Medical History</h4>
+<table>
+  <tr>
+    <td><input type="checkbox" name="polio" value="polio" <?php if($polio == 'polio') echo 'checked'; ?> readonly> Polio</td>
+    <td><input type="checkbox" name="tetanus" value="tetanus" <?php if($tetanus == 'tetanus') echo 'checked'; ?> readonly> Tetanus</td>
+    <td><input type="checkbox" name="chickenpox" value="chickenpox"  <?php if($chickenpox == 'chickenpox') echo 'checked'; ?> readonly> Chicken Pox</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" name="measles" value="measles" <?php if($measles == 'measles') echo 'checked'; ?> readonly> Measles</td>
+    <td><input type="checkbox" name="mumps" value="mumps" <?php if($mumps == 'mumps') echo 'checked'; ?> readonly> Mumps</td>
+    <td><input type="checkbox" name="asthma" value="asthma"  <?php if($asthma == 'asthma') echo 'checked'; ?> readonly> Asthma</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" name="tb" value="tb" <?php if($tb == 'tb') echo 'checked'; ?> readonly> Pulmonary Tuberculosis</td>
+    <td><input type="checkbox" name="hepatitis" value="hepatitis" <?php if($hepatitis == 'hepatitis') echo 'checked'; ?> readonly> Hepatitis</td>
+    <td><input type="checkbox" name="fainting" value="fainting" <?php if($fainting == 'fainting') echo 'checked'; ?> readonly> Fainting Spells</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" name="seizure_epilepsy" value="seizure_epilepsy" <?php if($seizure_epilepsy == 'seizure_epilepsy') echo 'checked'; ?> readonly> Seizure/Epilepsy</td>
+    <td><input type="checkbox" name="bleeding" value="bleeding"  <?php if($bleeding == 'bleeding') echo 'checked'; ?> readonly> Bleeding Tendencies</td>
+    <td><input type="checkbox" name="eyedisorder" value="eyedisorder"  <?php if($eyedisorder == 'eyedisorder') echo 'checked'; ?> readonly> Eye Disorder</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <label>Heart Ailment (please specify)</label>
+      <input type="text" name="heart" value="<?php echo $heart; ?>" readonly>
+      <label>Other illness (please specify)</label>
+      <input type="text" name="illness" value="<?php echo $illness; ?>" readonly>
+    </td>
+  </tr>
+                   </table>
+                   <br>
+                   <table>
+                    
+  <tr>
+    <td>
+      <label>Do you have any allergy to:</label><br><br>
+      <label>1. Food (if YES please specify, if NO leave it blank)</label>
+      <input type="text" name="allergyfood"  value="<?php echo $allergyfood; ?>" readonly><br><br>
+      <label>2. Medicine (if YES please specify, if NO leave it blank)</label>
+      <input type="text" name="allergymed"  value="<?php echo $allergymed; ?>" readonly>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label>Would you allow your child to be given medicine (as needed) while here in the school?</label>
+      <select name="allow_not">
+        <option value="">-- Select --</option>
+        <option type="radio" name="allow_not" value="yes" <?php if($allow_not == 'yes') echo 'selected'; ?> readonly > Yes </option>
+        <option type="radio" name="allow_not" value="no" <?php if($allow_not == 'no') echo 'selected'; ?> readonly > No </option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label>Is your child taking any medications at present? If YES, please list the name of the medicine/s:</label>
+      <input type="text" name="medications" value="<?php echo $medications; ?>" readonly>
+    </td>
+  </tr>
+</table>
 
-<div class="form-group">
+<br>
+
                                 <label>Name of the person to be notified in case of emergency:
                                 </label>
-                                    <input type="text" name="nameperson" value="<?php echo $nameperson; ?>" readonly></div>
-                                    <div class="form-group">
-                                    <label>Person contact number
-                                </label>
+                                    <input type="text" name="nameperson" value="<?php echo $nameperson; ?>" readonly>
+                    
+                                    <label>Person contact number </label>
+                               
                                     <input type="text" name="personcp" value="<?php echo $personcp; ?>" readonly>
-                                  &nbsp;&nbsp; &nbsp;  <label>Relationship:
+                                   <label>Relationship:
                                 </label>
                                     <input type="text" name="relationship" value="<?php echo $relationship; ?>" readonly>
-                                </div>
+                                    <br>
 
 								<input type="submit" name="submit_form_post" value="Submit">
 </form>
