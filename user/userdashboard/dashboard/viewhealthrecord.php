@@ -107,8 +107,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 				            <img src="assets/images/user.png" alt="user profile">
 				             <div class="app-utility-item app-user-dropdown dropdown">
 
-                   <?php  if (isset($_SESSION['username'])) : ?>
-                                    <p><?php echo $_SESSION['username']; ?></p>
+                   <?php  if (isset($_SESSION['email'])) : ?>
+                                    <p><?php echo $_SESSION['email']; ?></p>
                                     <?php endif ?></a>
                    </div>
                    <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"></a>
