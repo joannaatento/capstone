@@ -202,6 +202,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 							    <h6 class="accordion-header" id="faq1-heading-1">
 								<form class="form-horizontal mt-4" action="functions/healthrecorddashboardf.php" method="POST">
 
+
+                                
                                 <table>
   <tr>
     <td><span class="note" style="color: red;">*</span><label>ID Number</label></td>
@@ -209,11 +211,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   
     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Full Name <span class="help"></span></label></td>
-    <td><input type="text" id="name" name="fullname"  value="<?php echo $fullname; ?>" readonly placeholder="Enter Your Full Name"></td>
+    <td><input type="text" id="name" name="fullname" value="<?php echo $fullname; ?>" readonly placeholder="Enter Your Full Name"></td>
   
     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Age</label></td>
-    <td><input type="text" name="age"  value="<?php echo $age; ?>" readonly></td>
+    <td><input type="text" name="age" value="<?php echo $age; ?>" readonly></td>
   
                    </table>
                    <br>
@@ -222,17 +224,17 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                    <tr>
 
     <td><label>Birthday</label></td>
-    <td><input type="date" name="birthday"  value="<?php echo $birthday; ?>" readonly></td>
+    <td><input type="date" name="birthday" value="<?php echo $birthday; ?>" readonly></td>
   
     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Contact</label></td>
-    <td><input type="text" name="contact"  value="<?php echo $contact; ?>" readonly></td>
+    <td><input type="text" name="contact" value="<?php echo $contact; ?>" readonly></td>
   
     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Gender</label></td>
     <td>
       <select name="gender">
-        <option  value="<?php echo $gender; ?>" readonly>-- Select Gender --</option>
+        <option value="<?php echo $gender; ?>" readonly>-- Select Gender --</option>
         <option name="gender" value="male">Male</option>
         <option value="female">Female</option>
       </select>
@@ -245,7 +247,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <td><label>Are you....</label></td>
     <td>
       <select name="student_employee">
-        <option  value="<?php echo $student_employee; ?>" readonly>-- Select --</option>
+        <option value="<?php echo $student_employee; ?>" readonly>-- Select --</option>
         <option value="student">Student</option>
         <option value="employee">Employee</option>
       </select>
@@ -253,32 +255,32 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
  
     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <label>Grade/Course & Year/Position</label></td>
-    <td><input type="text" name="gradecourse"  value="<?php echo $gradecourse; ?>" readonly></td>
+    <td><input type="text" name="gradecourse" value="<?php echo $gradecourse; ?>" readonly></td>
  
     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Home Address</label></td>
-    <td><input type="text" name="address"  value="<?php echo $address; ?>" readonly></td>
+    <td><input type="text" name="address" value="<?php echo $address; ?>" readonly></td>
   </tr>
                    </table>
                    <br>
                    <table>
   <tr>
     <td><label>Father</label></td>
-    <td><input type="text" name="father"  value="<?php echo $father; ?>" readonly></td>
+    <td><input type="text" name="father" value="<?php echo $father; ?>" readonly></td>
   
     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Contact Number</label></td>
-    <td><input type="text" name="fcontact"  value="<?php echo $fcontact; ?>" readonly></td>
+    <td><input type="text" name="fcontact" value="<?php echo $fcontact; ?>" readonly></td>
   </tr>
                    </table>
                    <br>
                    <table>
   <tr>
     <td><label>Mother</label></td>
-    <td><input type="text" name="mother"  value="<?php echo $mother; ?>" readonly></td>
+    <td><input type="text" name="mother" value="<?php echo $mother; ?>" readonly></td>
  
     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Contact Number</label></td>
-    <td><input type="text" name="mcontact"  value="<?php echo $mcontact; ?>" readonly></td>
+    <td><input type="text" name="mcontact" value="<?php echo $mcontact; ?>" readonly></td>
   </tr>
 </table>
 
@@ -288,12 +290,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   <tr>
     <td><input type="checkbox" name="polio" value="polio" <?php if($polio == 'polio') echo 'checked'; ?> readonly> Polio</td>
     <td><input type="checkbox" name="tetanus" value="tetanus" <?php if($tetanus == 'tetanus') echo 'checked'; ?> readonly> Tetanus</td>
-    <td><input type="checkbox" name="chickenpox" value="chickenpox"  <?php if($chickenpox == 'chickenpox') echo 'checked'; ?> readonly> Chicken Pox</td>
+    <td><input type="checkbox" name="chickenpox" value="chickenpox" <?php if($chickenpox == 'chikenpox') echo 'checked'; ?> readonly> Chicken Pox</td>
   </tr>
   <tr>
     <td><input type="checkbox" name="measles" value="measles" <?php if($measles == 'measles') echo 'checked'; ?> readonly> Measles</td>
     <td><input type="checkbox" name="mumps" value="mumps" <?php if($mumps == 'mumps') echo 'checked'; ?> readonly> Mumps</td>
-    <td><input type="checkbox" name="asthma" value="asthma"  <?php if($asthma == 'asthma') echo 'checked'; ?> readonly> Asthma</td>
+    <td><input type="checkbox" name="asthma" value="asthma"> Asthma</td>
   </tr>
   <tr>
     <td><input type="checkbox" name="tb" value="tb" <?php if($tb == 'tb') echo 'checked'; ?> readonly> Pulmonary Tuberculosis</td>
@@ -302,8 +304,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   </tr>
   <tr>
     <td><input type="checkbox" name="seizure_epilepsy" value="seizure_epilepsy" <?php if($seizure_epilepsy == 'seizure_epilepsy') echo 'checked'; ?> readonly> Seizure/Epilepsy</td>
-    <td><input type="checkbox" name="bleeding" value="bleeding"  <?php if($bleeding == 'bleeding') echo 'checked'; ?> readonly> Bleeding Tendencies</td>
-    <td><input type="checkbox" name="eyedisorder" value="eyedisorder"  <?php if($eyedisorder == 'eyedisorder') echo 'checked'; ?> readonly> Eye Disorder</td>
+    <td><input type="checkbox" name="bleeding" value="bleeding" <?php if($bleeding == 'bleeding') echo 'checked'; ?> readonly> Bleeding Tendencies</td>
+    <td><input type="checkbox" name="eyedisorder" value="eyedisorder" <?php if($eyedisorder == 'eyedisorder') echo 'checked'; ?> readonly > Eye Disorder</td>
   </tr>
   <tr>
     <td colspan="3">
@@ -321,9 +323,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <td>
       <label>Do you have any allergy to:</label><br><br>
       <label>1. Food (if YES please specify, if NO leave it blank)</label>
-      <input type="text" name="allergyfood"  value="<?php echo $allergyfood; ?>" readonly><br><br>
+      <input type="text" name="allergyfood" value="<?php echo $allergyfood; ?>" readonly><br><br>
       <label>2. Medicine (if YES please specify, if NO leave it blank)</label>
-      <input type="text" name="allergymed"  value="<?php echo $allergymed; ?>" readonly>
+      <input type="text" name="allergymed" value="<?php echo $allergymed; ?>" readonly>
     </td>
   </tr>
   <tr>
@@ -331,8 +333,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       <label>Would you allow your child to be given medicine (as needed) while here in the school?</label>
       <select name="allow_not">
         <option value="">-- Select --</option>
-        <option type="radio" name="allow_not" value="yes" <?php if($allow_not == 'yes') echo 'selected'; ?> readonly > Yes </option>
-        <option type="radio" name="allow_not" value="no" <?php if($allow_not == 'no') echo 'selected'; ?> readonly > No </option>
+        <option type="radio" name="allow_not" value="yes" <?php if($allow_not == 'yes') echo 'selected'; ?> readonly> Yes </option>
+        <option type="radio" name="allow_not" value="no" <?php if($allow_not == 'no') echo 'selected'; ?> readonly> No </option>
       </select>
     </td>
   </tr>
@@ -344,19 +346,18 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   </tr>
 </table>
 
-<br>
-
+<div class="form-group">
                                 <label>Name of the person to be notified in case of emergency:
                                 </label>
-                                    <input type="text" name="nameperson" value="<?php echo $nameperson; ?>" readonly>
-                    
-                                    <label>Person contact number </label>
-                               
+                                    <input type="text" name="nameperson" value="<?php echo $nameperson; ?>" readonly></div>
+                                    <div class="form-group">
+                                    <label>Person contact number
+                                </label>
                                     <input type="text" name="personcp" value="<?php echo $personcp; ?>" readonly>
-                                   <label>Relationship:
+                                  &nbsp;&nbsp; &nbsp;  <label>Relationship:
                                 </label>
                                     <input type="text" name="relationship" value="<?php echo $relationship; ?>" readonly>
-                                    <br>
+                                </div>
 
 								<input type="submit" name="submit_form_post" value="Submit">
 </form>
