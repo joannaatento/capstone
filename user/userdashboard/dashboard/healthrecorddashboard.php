@@ -277,7 +277,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   </tr>
   <tr>
     <td>
-      <label>Would you allow your child to be given medicine (as needed) while here in the school?)</label>
+      <label>Would you allow your child to be given medicine (as needed) while here in the school?</label>
       <select name="allow_not">
         <option value="">-- Select --</option>
         <option type="radio" name="allow_not" value="yes"> Yes </option>
@@ -290,7 +290,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       <label>Is your child taking any medications at present? If YES, please list the name of the medicine/s:</label>
       <input type="text" name="medications" value="">
     </td>
-  </tr>
+                   </tr>
 </table>
 
 <br>
