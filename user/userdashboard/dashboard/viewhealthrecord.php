@@ -40,7 +40,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <body class="app">   
     
 <?php
-  $sql= "SELECT * FROM healthrecord";
+ $sql = "SELECT * FROM healthrecord";
   $result = mysqli_query($conection_db, $sql);
 
   if (mysqli_num_rows($result) > 0) {
@@ -96,10 +96,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 						    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
 					    </a>
 				    </div><!--//col-->
-		            <div class="search-mobile-trigger d-sm-none col">
-			            <i class="search-mobile-trigger-icon fas fa-search"></i>
-			        </div><!--//col-->
-		            
+		          
 		            
 		            <div class="app-utilities col-auto">
 			            
@@ -129,7 +126,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	        <div class="sidepanel-inner d-flex flex-column">
 		        <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
 		        <div class="app-branding">
-		        <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="assets/images/dwcl.png" alt="logo"></a>
+		        <a class="app-logo" href="healthrecorddashboard.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <img class="logo-icon me-2" src="assets/images/dwcl.png" alt="logo"></a>
 	
 		        </div><!--//app-branding-->  
 		        
@@ -247,9 +245,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <td><label>Are you....</label></td>
     <td>
       <select name="student_employee">
-        <option value="<?php echo $student_employee; ?>" readonly>-- Select --</option>
-        <option value="student">Student</option>
-        <option value="employee">Employee</option>
+        <option value="">-- Select --</option>
+        <option value="student" <?php if($student_employee == 'student') echo 'selected'; ?>>Student</option>
+        <option value="employee" <?php if($student_employee== 'employee') echo 'selected'; ?>>Employee</option>
       </select>
     </td>
  

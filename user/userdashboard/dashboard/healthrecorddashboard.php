@@ -56,8 +56,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 				            <img src="assets/images/user.png" alt="user profile">
 				             <div class="app-utility-item app-user-dropdown dropdown">
 
-                   <?php  if (isset($_SESSION['username'])) : ?>
-                                    <p><?php echo $_SESSION['username']; ?></p>
+                   <?php  if (isset($_SESSION['email'])) : ?>
+                                    <p><?php echo $_SESSION['email']; ?></p>
                                     <?php endif ?></a>
                    </div>
                    <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"></a>
@@ -78,13 +78,17 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	        <div class="sidepanel-inner d-flex flex-column">
 		        <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
 		        <div class="app-branding">
-		        <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="assets/images/dwcl.png" alt="logo"></a>
+		        <a class="app-logo" href="healthrecorddashboard.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             
+            <img class="logo" src="assets/images/dwcl.png" alt="logo" width="100" height="100"></a>
 	
 		        </div><!--//app-branding-->  
+		        
 		        
                 </br>
                    </br>
 			    <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
+      
 				    <ul class="app-menu list-unstyled accordion" id="menu-accordion">
 					    <li class="nav-item has-submenu">
 					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->

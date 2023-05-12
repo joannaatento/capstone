@@ -50,11 +50,18 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 			        </div><!--//col-->
 		            
 		            
-		            <div class="app-utilities col-auto">
+					<div class="app-utilities col-auto">
 			            
 			            <div class="app-utility-item app-user-dropdown dropdown">
-				            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="assets/images/user.png" alt="user profile"></a>
-				            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
+				            <img src="assets/images/user.png" alt="user profile">
+				             <div class="app-utility-item app-user-dropdown dropdown">
+
+                   <?php  if (isset($_SESSION['email'])) : ?>
+                                    <p><?php echo $_SESSION['email']; ?></p>
+                                    <?php endif ?></a>
+                   </div>
+				   <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"></a>
+                            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
 								<li><a class="dropdown-item" href="account.html">Account</a></li>
 								<li><a class="dropdown-item" href="settings.html">Settings</a></li>
 								<li><hr class="dropdown-divider"></li>
@@ -71,11 +78,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	        <div class="sidepanel-inner d-flex flex-column">
 		        <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
 		        <div class="app-branding">
-		            <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="assets/images/app-logo.svg" alt="logo"><span class="logo-text">PORTAL</span></a>
+		            <a class="app-logo" href="healthrecorddashboard.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<img class="logo-icon me-2" src="assets/images/dwcl.png" alt="logo"><span class="logo-text"></span></a>
 	
 		        </div><!--//app-branding-->  
 		        
 			    <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
+					<br><br>
 				    <ul class="app-menu list-unstyled accordion" id="menu-accordion">
 					    <li class="nav-item has-submenu">
 					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
