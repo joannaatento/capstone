@@ -79,13 +79,16 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 		        <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
 		        <div class="app-branding">
 		        <a class="app-logo" href="healthrecorddashboard.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <img class="logo-icon me-2" src="assets/images/dwcl.png" alt="logo"></a>
+             
+            <img class="logo" src="assets/images/dwcl.png" alt="logo" width="100" height="100"></a>
 	
 		        </div><!--//app-branding-->  
+		        
 		        
                 </br>
                    </br>
 			    <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
+      
 				    <ul class="app-menu list-unstyled accordion" id="menu-accordion">
 					    <li class="nav-item has-submenu">
 					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->

@@ -40,7 +40,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <body class="app">   
     
 <?php
-  $sql= "SELECT * FROM healthrecord";
+ $sql = "SELECT * FROM healthrecord";
   $result = mysqli_query($conection_db, $sql);
 
   if (mysqli_num_rows($result) > 0) {
@@ -245,9 +245,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <td><label>Are you....</label></td>
     <td>
       <select name="student_employee">
-        <option value="<?php echo $student_employee; ?>" readonly>-- Select --</option>
-        <option value="student">Student</option>
-        <option value="employee">Employee</option>
+        <option value="">-- Select --</option>
+        <option value="student" <?php if($student_employee == 'student') echo 'selected'; ?>>Student</option>
+        <option value="employee" <?php if($student_employee== 'employee') echo 'selected'; ?>>Employee</option>
       </select>
     </td>
  
