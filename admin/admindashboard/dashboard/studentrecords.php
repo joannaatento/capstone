@@ -232,25 +232,30 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
  
 	<script>
   function searchRecords() {
-    let input,table, tr, td, txtValue;
+    let input, table, tr, td, i, txtValue, found;
     input = document.getElementById("searchQuery");
     filter = input.value.toUpperCase();
     table = document.getElementById("healthRecordTable");
     tr = table.getElementsByTagName("tr");
+    found = false;
     for (i = 0; i < tr.length; i++) {
       td = tr[i].getElementsByTagName("td")[0];
       if (td) {
         txtValue = td.textContent || td.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
           tr[i].style.display = "";
+          found = true;
         } else {
           tr[i].style.display = "none";
-		  
-		}
+        }
       }
+    }
+    if (!found) {
+      table.innerHTML += "<tr><td colspan='3' style='text-align:center;'>No record found</td></tr>";
     }
   }
 </script>
+
  
     <!-- Javascript -->          
     <script src="assets/plugins/popper.min.js"></script>
