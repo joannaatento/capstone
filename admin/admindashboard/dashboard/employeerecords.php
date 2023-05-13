@@ -6,7 +6,7 @@ require_once '../../../connection.php';
  
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: ../../loginuser.php");
+    header("location: ../../adminlogin.php");
     exit;
 }
 ?>
@@ -30,6 +30,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
     <!-- App CSS -->  
     <link id="theme-style" rel="stylesheet" href="assets/css/portal.css">
+    <link id="theme-style" rel="stylesheet" href="assets/css/tablecss.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+
+
 
 </head> 
 
@@ -56,8 +60,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 				            <img src="assets/images/user.png" alt="user profile">
 				             <div class="app-utility-item app-user-dropdown dropdown">
 
-                   <?php  if (isset($_SESSION['email'])) : ?>
-                                    <p><?php echo $_SESSION['email']; ?></p>
+                   <?php  if (isset($_SESSION['username'])) : ?>
+                                    <p><?php echo $_SESSION['username']; ?></p>
                                     <?php endif ?></a>
                    </div>
                    <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"></a>
@@ -78,17 +82,14 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	        <div class="sidepanel-inner d-flex flex-column">
 		        <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
 		        <div class="app-branding">
-		        <a class="app-logo" href="healthrecorddashboard.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-             
-            <img class="logo" src="assets/images/dwcl.png" alt="logo" width="100" height="100"></a>
+		        <a class="app-logo" href="adminrecords.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <img class="logo-icon me-2" src="assets/images/dwcl.png" alt="logo"></a>
 	
 		        </div><!--//app-branding-->  
-		        
 		        
                 </br>
                    </br>
 			    <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
-      
 				    <ul class="app-menu list-unstyled accordion" id="menu-accordion">
 					    <li class="nav-item has-submenu">
 					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
@@ -101,7 +102,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 								</svg>
 						         </span>
                                  
-		                         <span class="nav-link-text">Health Record</span>
+		                         <span class="nav-link-text">Health Records</span>
 		                         <span class="submenu-arrow">
 		                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 	  									<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
@@ -111,8 +112,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                   
 					        			<div id="submenu-1" class="collapse submenu submenu-1" data-bs-parent="#menu-accordion">
 						        <ul class="submenu-list list-unstyled">
-									<li class="submenu-item"><a class="submenu-link" href="healthrecorddashboard.php">Health Record Form</a></li>
-							        <li class="submenu-item"><a class="submenu-link" href="viewhealthrecord.php">View Health Record</a></li>
+									<li class="submenu-item"><a class="submenu-link" href="healthrecorddashboard.php">Students</a></li>
+							        <li class="submenu-item"><a class="submenu-link" href="viewhealthrecord.php">Employees</a></li>
 						        </ul>
 					        </div>
 					    </li><!--//nav-item-->
@@ -143,175 +144,64 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	    
 	    <div class="app-content pt-3 p-md-3 p-lg-4">
 		    <div class="container-xl">
-			<h1 class="app-page-title">Fill-up Health Record Form</h1>
+			<h1 class="app-page-title">Students Health Records</h1>
                 <div class="app-card app-card-accordion shadow-sm mb-4">
 				    <div class="app-card-header p-4 pb-2  border-0">
-				       <h4 class="app-card-title">Please fill-up honestly.</h4>
-				    </div><!--//app-card-header-->
-				    <div class="app-card-body p-4 pt-0">
-					    <div id="faq1-accordion" class="faq1-accordion faq-accordion accordion">
-						    
-						    <div class="accordion-item">
-							    <h6 class="accordion-header" id="faq1-heading-1">
-								<form class="form-horizontal mt-4" action="functions/healthrecorddashboardf.php" method="POST">
+                
 
-                                <table>
-  <tr>
-    <td><span class="note" style="color: red;">*</span><label>ID Number</label></td>
-    <td><input type="text" name="idnumber" value="" placeholder="Enter Your ID Number" required></td>
-  
-    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Full Name <span class="help"></span></label></td>
-    <td><input type="text" id="name" name="fullname" value="" placeholder="Enter Your Full Name"></td>
-  
-    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Age</label></td>
-    <td><input type="text" name="age" value=""></td>
-  
-                   </table>
-                   <br>
-  <table>
+					&nbsp;&nbsp;&nbsp;<div class="app-search-box col">
+			<form class="app-search-form">
+				<input type="text" placeholder="Search..." name="query" id="searchQuery" class="form-control search-input">
+				<button type="button" class="btn search-btn btn-primary" onclick="searchRecords()"><i class="fas fa-search"></i></button>
+			</form>
+			</div>
 
-                   <tr>
+<div class="app-card-body p-4 pt-0">
+  <div id="healthRecordTable">
+    <table>
+      <thead>
+        <tr>
+          <th>Student ID Number</th>
+          <th>Student Name</th>
+          <th>Age</th>
+          <th>Contact</th>
+          <th>Name of Person to Contact</th>
+          <th>Contact Number</th>
+          <th>Relationship</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="healthRecordTableBody">
+        <?php
 
-    <td><label>Birthday</label></td>
-    <td><input type="date" name="birthday" value=""></td>
-  
-    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Contact</label></td>
-    <td><input type="text" name="contact" value=""></td>
-  
-    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Gender</label></td>
-    <td>
-      <select name="gender">
-        <option value="">-- Select Gender --</option>
-        <option name="gender" value="male">Male</option>
-        <option value="female">Female</option>
-      </select>
-    </td>
-  </tr>
-                   </table>
-                   <br>
-                   <table>
-  <tr>
-    <td><label>Are you....</label></td>
-    <td>
-      <select name="student_employee">
-        <option value="">-- Select --</option>
-        <option value="student">Student</option>
-        <option value="employee">Employee</option>
-      </select>
-    </td>
- 
-    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <label>Grade/Course & Year/Position</label></td>
-    <td><input type="text" name="gradecourse" value=""></td>
- 
-    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Home Address</label></td>
-    <td><input type="text" name="address" value=""></td>
-  </tr>
-                   </table>
-                   <br>
-                   <table>
-  <tr>
-    <td><label>Father</label></td>
-    <td><input type="text" name="father" value=""></td>
-  
-    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Contact Number</label></td>
-    <td><input type="text" name="fcontact" value=""></td>
-  </tr>
-                   </table>
-                   <br>
-                   <table>
-  <tr>
-    <td><label>Mother</label></td>
-    <td><input type="text" name="mother" value=""></td>
- 
-    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Contact Number</label></td>
-    <td><input type="text" name="mcontact" value=""></td>
-  </tr>
+          $sql = "SELECT * FROM healthrecord WHERE student_employee = 'employee'";
+	   	  $result = mysqli_query($conection_db, $sql);
+
+
+ 		while($row = $result->fetch_assoc()){
+        ?>
+        <tr>
+          <td><?php echo $row['idnumber']; ?></td>
+          <td><?php echo $row['fullname']; ?></td>
+          <td><?php echo $row['age']; ?></td>
+          <td><?php echo $row['contact']; ?></td>
+          <td><?php echo $row['nameperson']; ?></td>
+          <td><?php echo $row['personcp']; ?></td>
+          <td><?php echo $row['relationship']; ?></td>
+        <td>
+
+        <center><a href="viewrecordstudents.php?idnumber=<?php echo $row['idnumber']; ?>">
+  		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
+    	<path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/>
+  		</svg></a></center>
+
+     
+        </td>
+      </tr>
+      
+    <?php } ?>
+  </tbody>
 </table>
-
-<br><br>
-<h4 class="app-card-title">Medical History</h4>
-<table>
-  <tr>
-    <td><input type="checkbox" name="polio" value="polio"> Polio</td>
-    <td><input type="checkbox" name="tetanus" value="tetanus"> Tetanus</td>
-    <td><input type="checkbox" name="chickenpox" value="chickenpox"> Chicken Pox</td>
-  </tr>
-  <tr>
-    <td><input type="checkbox" name="measles" value="measles"> Measles</td>
-    <td><input type="checkbox" name="mumps" value="mumps"> Mumps</td>
-    <td><input type="checkbox" name="asthma" value="asthma"> Asthma</td>
-  </tr>
-  <tr>
-    <td><input type="checkbox" name="tb" value="tb"> Pulmonary Tuberculosis</td>
-    <td><input type="checkbox" name="hepatitis" value="hepatitis"> Hepatitis</td>
-    <td><input type="checkbox" name="fainting" value="fainting"> Fainting Spells</td>
-  </tr>
-  <tr>
-    <td><input type="checkbox" name="seizure_epilepsy" value="seizure_epilepsy"> Seizure/Epilepsy</td>
-    <td><input type="checkbox" name="bleeding" value="bleeding"> Bleeding Tendencies</td>
-    <td><input type="checkbox" name="eyedisorder" value="eyedisorder"> Eye Disorder</td>
-  </tr>
-  <tr>
-    <td colspan="3">
-      <label>Heart Ailment (please specify)</label>
-      <input type="text" name="heart" value="">
-      <label>Other illness (please specify)</label>
-      <input type="text" name="illness" value="">
-    </td>
-  </tr>
-                   </table>
-                   <br>
-                   <table>
-                    
-  <tr>
-    <td>
-      <label>Do you have any allergy to:</label><br><br>
-      <label>1. Food (if YES please specify, if NO leave it blank)</label>
-      <input type="text" name="allergyfood" value=""><br><br>
-      <label>2. Medicine (if YES please specify, if NO leave it blank)</label>
-      <input type="text" name="allergymed" value="">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <label>Would you allow your child to be given medicine (as needed) while here in the school?</label>
-      <select name="allow_not">
-        <option value="">-- Select --</option>
-        <option type="radio" name="allow_not" value="yes"> Yes </option>
-        <option type="radio" name="allow_not" value="no"> No </option>
-      </select>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <label>Is your child taking any medications at present? If YES, please list the name of the medicine/s:</label>
-      <input type="text" name="medications" value="">
-    </td>
-                   </tr>
-</table>
-
-<br>
-
-                                <label>Name of the person to be notified in case of emergency:
-                                </label>
-                                    <input type="text" name="nameperson" value="">
-                    
-                                    <label>Person contact number </label>
-                               
-                                    <input type="text" name="personcp" value="">
-                                   <label>Relationship:
-                                </label>
-                                    <input type="text" name="relationship" value="">
-                                </br> 
-								<input type="submit" name="submit_form_post" value="Submit">
-</form>
 							</div><!--//accordion-item-->
 							
 				    </div><!--//col-->
@@ -331,6 +221,33 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div><!--//app-wrapper-->    					
 
  
+	<script>
+  function searchRecords() {
+    let input, table, tr, td, i, txtValue, found;
+    input = document.getElementById("searchQuery");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("healthRecordTable");
+    tr = table.getElementsByTagName("tr");
+    found = false;
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+          found = true;
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+    if (!found) {
+      table.innerHTML += "<tr><td colspan='3' style='text-align:center;'>No record found</td></tr>";
+    }
+  }
+</script>
+
+ 
     <!-- Javascript -->          
     <script src="assets/plugins/popper.min.js"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
@@ -342,6 +259,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <!-- Page Specific JS -->
     <script src="assets/js/app.js"></script> 
 
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 </body>
 </html> 
 
