@@ -1,0 +1,44 @@
+@media print {
+    header.app-header,
+    footer.app-footer {
+      display: none;
+    }
+    #print-button {
+        display: none;
+  }
+  
+    .app-footer {
+      display: none;
+   
+  }
+ 
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+  }
+  .app-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .app-content {
+    overflow: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+ 
+  
+  /* adjust table width for print */
+  table {
+    width: 100%;
+  }
+ 
+
+}
