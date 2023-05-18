@@ -69,7 +69,7 @@ require_once "function/adminloginf.php";
         </div>
         
         
-        <p class="small text-center text-muted mb-0">All rights reserved. © Space. 2020 soengsouy.com.</p>
+       
     </form>
 </div>
 

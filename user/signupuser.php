@@ -89,7 +89,7 @@
             <p type="submit" class="text-muted">Have an account? <a href="loginuser.php">Signin</a></p>
         </div>
 		
-        <p class="small text-center text-muted mb-0">All rights reserved. © Space. 2020 soengsouy.com.</p>
+     
     </form>
 </div>
 
