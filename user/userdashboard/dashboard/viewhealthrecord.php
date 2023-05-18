@@ -85,6 +85,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
   }
 ?>
+
+
     <header class="app-header fixed-top">	   	            
         <div class="app-header-inner">  
 	        <div class="container-fluid py-2">
@@ -198,7 +200,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 						    
 						    <div class="accordion-item">
 							    <h6 class="accordion-header" id="faq1-heading-1">
-								<form class="form-horizontal mt-4" action="functions/healthrecorddashboardf.php" method="POST">
+
+             
+								<form class="form-horizontal mt-4" action="functions/editf.php" method="POST">
 
 
                                 
@@ -357,9 +361,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                     <input type="text" name="relationship" value="<?php echo $relationship; ?>" readonly>
                                 </div>
 
-								<input type="submit" name="submit_form_post" value="Submit">
+								<input type="submit" name="edit_form" value="Update">
 </form>
-							</div><!--//accordion-item-->
+				</div><!--//accordion-item-->
 							
 				    </div><!--//col-->
 			    </div><!--//row-->
